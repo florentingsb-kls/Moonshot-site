@@ -1,0 +1,254 @@
+
+:root{
+    --red: #e10600;
+    --text: #111;
+    --muted: #555;
+  }
+  
+  /* ---- 1) Fond global clair blanc + rouge ---- */
+  body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+  
+    /* Fond blanc + rouge + voile noir doux */
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.733),
+        rgba(0, 0, 0, 0.075)
+      ),
+      linear-gradient(
+        180deg,
+        rgba(32, 0, 0, 0.616)
+      );
+  }
+  
+  /* ---- 2) Topbar en bandeau FIXE en haut ---- */
+  .topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  
+    padding: 14px 24px;
+  
+    background: linear-gradient(90deg, #ffffff, #f5f5f5);
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+  }
+  
+  /* Lien cliquable vers index */
+  .brand-link{
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+  }
+  
+  /* Bloc brand */
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .brand-mark{
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--red);
+    box-shadow: 0 10px 22px rgba(225,6,0,.20);
+  }
+  
+  .brand-title{
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1.1;
+  }
+  
+  .brand-subtitle{
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  
+  /* IMPORTANT : espace sous la topbar */
+  .wrap{
+    width: min(1280px, 96vw);
+    padding: 10px 0 24px; /* décale le contenu sous le bandeau */
+    margin: 0 auto;
+  }
+  
+  /* ---- 3) Panel (conteneur) adapté au fond clair ---- */
+  .panel{
+    border-radius: 14px;
+    padding: 22px 22px 26px;
+    background: rgba(255,255,255,.70);
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 18px 50px rgba(0,0,0,.10);
+  }
+  
+.grid{
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+    gap: 22px;
+  }
+
+  .tile--wide,
+  .tile-link--wide{
+    grid-column: span 1 !important;
+  }
+  
+  
+  /* lien englobant */
+  .tile-link{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    outline: none;
+  }
+  
+  /* tuile */
+  .tile{
+  position: relative;
+  height: 130px;
+  border-radius: 18px;
+  overflow: hidden;
+
+  /* IMAGE EN FOND PLEIN */
+  background-image: var(--img);
+  background-size: cover;        
+  background-position: center;     
+  background-repeat: no-repeat;
+
+  /* Fond clair / blanc comme ton design */
+  background-color: #ffffff;
+
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  transition: transform .2s ease, box-shadow .2s ease;
+  }
+  
+  /* image en arrière-plan (faible opacité mais lisible) */
+  .tile::before{
+    content:"";
+    position:absolute;
+    inset: 10px;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: contain;
+    opacity: .70;
+    filter: contrast(1.05) saturate(.95);
+    pointer-events:none;
+  }
+  
+  /* voile léger pour garder la lisibilité du texte */
+  .tile::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(90deg, rgba(255,255,255,.35), rgba(255,255,255,.10));
+    pointer-events:none;
+  }
+  
+  /* ---- 5) TITRES des cases en ROUGE ---- */
+  .tile__title,
+  .tile__qty{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    line-height: 1;
+  }
+  
+  .tile__title{
+    margin-top: 18px;
+    font-weight: 900;
+    letter-spacing: .2px;
+    color: var(--red);          /* <- ROUGE demandé */
+    font-size: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,.12);
+  }
+  
+  .tile__qty{
+    margin-top: 10px;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: .8px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  
+  /* Tuile large (Badges) */
+  .tile--wide,
+  .tile-link--wide{
+    grid-column: span 2;
+  }
+  
+  /* Hover : effet cliquable propre */
+  .tile-link:hover .tile{
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 18px 35px rgba(225, 6, 0, 0.18);
+    border-color: rgba(225, 6, 0, 0.35);
+    cursor: pointer;
+  }
+  
+  /* Active (clic) */
+  .tile-link:active .tile{
+    transform: translateY(-1px) scale(0.99);
+  }
+  
+  /* Focus clavier (accessibilité) */
+  .tile-link:focus-visible .tile{
+    outline: 3px solid rgba(225,6,0,.40);
+    outline-offset: 3px;
+  }
+  
+  /* ---- 6) Section Arlo + footer (versions claires) ---- */
+  .subTitle{
+    margin: 26px 0 12px;
+    text-align: center;
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--red); /* cohérent (rouge) */
+    letter-spacing: .2px;
+  }
+  
+  .arlo{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap:22px;
+    width: min(900px, 100%);
+    margin: 0 auto;
+  }
+  
+  .footerTitle{
+    margin-top: 20px;
+    text-align:center;
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--red); /* cohérent (rouge) */
+    letter-spacing: .2px;
+  }
+  
+  /* ---- Responsive ---- */
+  @media (max-width: 1400px){
+    .grid{ grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+  }
+  @media (max-width: 1100px){
+    .grid{ grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  }
+  @media (max-width: 900px){
+    .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  }
+  @media (max-width: 600px){
+    .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  }
+  
+
+  
+  

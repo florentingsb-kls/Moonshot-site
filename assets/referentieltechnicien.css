@@ -1,0 +1,320 @@
+   :root{
+    --red:#e10600;
+    --black:#0b0b0d;
+    --text:#111;
+    --muted:#555;
+    --border: rgba(0,0,0,.10);
+    --shadow: 0 18px 50px rgba(0,0,0,.12);
+  }
+  
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+  
+    /* Fond blanc + rouge + voile noir doux */
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.733),
+        rgba(0, 0, 0, 0.075)
+      ),
+      linear-gradient(
+        180deg,
+        rgba(32, 0, 0, 0.616)
+      );
+  }
+  
+  /* ===================== TOPBAR ===================== */
+  .topbar{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 1000;
+  
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+  
+    padding: 12px 18px;
+    background: linear-gradient(90deg, #fff, #f5f5f5);
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+  }
+  
+  .brand-link{ text-decoration:none; color:inherit; }
+  
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  
+  .brand-mark{
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(225,6,0,1), rgba(225,6,0,.55));
+    box-shadow: 0 12px 28px rgba(225,6,0,.25);
+  }
+  
+  .brand-text{ display:flex; flex-direction: column; }
+  
+  .brand-title{
+    font-weight:900;
+    font-size:18px;
+    line-height:1.1;
+  }
+  
+  .brand-subtitle{
+    font-size:12px;
+    color: var(--muted);
+    margin-top:2px;
+  }
+  
+  /* ===================== HERO ===================== */
+  .hero{
+    position: relative;
+    margin-top: 64px; /* hauteur topbar */
+    height: 260px;
+    background: #111;
+    overflow:hidden;
+    border-bottom: 3px solid var(--red);
+  }
+  
+  .hero-content{
+    position: relative;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 18px;
+    width: min(1200px, 94vw);
+    margin: 0 auto;
+    color: black;
+  }
+  
+  .hero-content h1{
+    margin:0;
+    font-size: clamp(24px, 3vw, 40px);
+    letter-spacing: .2px;
+  }
+  
+  .hero-content p{
+    margin:0;
+    color: black;
+    max-width: 70ch;
+  }
+  
+  /* ===================== LAYOUT ===================== */
+  .wrap{
+    width: min(1200px, 94vw);
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+  
+  .panel{
+    border-radius: 14px;
+    padding: 18px 18px 20px;
+    background: rgba(255,255,255,.76);
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: var(--shadow);
+  }
+  
+  .section-title{
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--red);
+  }
+  
+  /* Paragraphes “.text” présents dans ton HTML */
+  .text{
+    margin: 0 0 10px;
+    line-height: 1.6;
+    color: rgba(0,0,0,.80);
+    font-size: 15px;
+  }
+  
+  /* Strong direct dans un panel (tu en as) */
+  .panel > strong{
+    display:block;
+    margin: 6px 0 12px;
+    color: rgba(0,0,0,.84);
+    font-weight: 900;
+    line-height: 1.5;
+  }
+  
+  /* ===================== TABLES ===================== */
+  .table-wrap{
+    border: 2px solid rgba(225,6,0,.35);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(225,6,0,.10);
+  }
+  
+  .moonshot-table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .moonshot-table thead th{
+    text-align: center;
+    padding: 12px 12px;
+    background: linear-gradient(90deg, rgba(225,6,0,.14), #ffffff);
+    border-bottom: 2px solid rgba(225,6,0,.25);
+    font-weight: 950;
+    color: rgba(0,0,0,.78);
+  }
+  
+  .moonshot-table tbody th,
+  .moonshot-table tbody td{
+    padding: 12px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: rgba(0,0,0,.78);
+  }
+  
+  .moonshot-table tbody th{
+    width: 50%;
+    background: linear-gradient(180deg, rgba(225,6,0,.06), #fff);
+    font-weight: 900;
+    color: rgba(0,0,0,.86);
+  }
+  
+  .moonshot-table tbody tr:hover{
+    background: rgba(225,6,0,.05);
+  }
+  
+  /* Spécifique “maintenance-table” (tes tables ont les 2 classes) */
+  .maintenance-table td:nth-child(1){
+    font-weight: 900;
+    color: rgba(0,0,0,.80);
+  }
+  .maintenance-table td:nth-child(2){
+    font-weight: 900;
+    color: rgba(0,0,0,.78);
+  }
+  
+  /* ===================== NOTE ===================== */
+  .note{
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-left: 4px solid var(--red);
+    background: rgba(225,6,0,.06);
+    border-radius: 10px;
+    color: rgba(0,0,0,.78);
+    line-height: 1.6;
+  }
+  
+  /* ===================== LISTE CODES ===================== */
+  .list{
+    margin: 10px 0 0;
+    padding-left: 0;
+    list-style: none;
+  
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  
+  .list li{
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: var(--shadow);
+    font-weight: 950;
+    letter-spacing: .2px;
+    color: rgba(0,0,0,.82);
+    text-align: center;
+  }
+  
+  .list li:hover{
+    transform: translateY(-1px);
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0 22px 55px rgba(0,0,0,.16);
+  }
+  
+  .list strong{
+    color: red;
+  }
+
+  .list-repertoire{
+    margin: 10px 0 0;
+    padding-left: 0;
+    list-style: none;
+  
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  
+  .list-repertoire li{
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: var(--shadow);
+    font-weight: 950;
+    letter-spacing: .2px;
+    color: rgba(0,0,0,.82);
+    text-align: left;
+  }
+  
+  .list-repertoire li:hover{
+    transform: translateY(-1px);
+    border-color: rgba(225,6,0,.22);
+    box-shadow: 0 22px 55px rgba(0,0,0,.16);
+    background: rgb(255, 255, 255);
+  }
+  
+  .list-repertoire strong{
+    color: red;
+  }
+
+  button{
+border: none;
+background-color: white;
+border-radius: 14px;
+  }
+
+  button:hover{
+    transform: translateY(-5px);
+    box-shadow: 22px 22px 22px rgba(119, 0, 0, 0.603);
+    background-color: white;
+      }
+
+  p strong{
+    color: red;
+  }
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 900px){
+    .list{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  
+  @media (max-width: 560px){
+    .list{ grid-template-columns: 1fr; }
+  
+    /* tables lisibles sur mobile */
+    .moonshot-table thead{ display:none; }
+    .moonshot-table, .moonshot-table tbody, .moonshot-table tr,
+    .moonshot-table th, .moonshot-table td{
+      display:block;
+      width: 100%;
+    }
+    .moonshot-table tr{ border-bottom: 1px solid var(--border); }
+    .moonshot-table tbody th{
+      width: 100%;
+      border-bottom: 0;
+      padding-bottom: 6px;
+    }
+    .moonshot-table tbody td{
+      padding-top: 0;
+    }
+  }
+  

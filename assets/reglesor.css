@@ -1,0 +1,613 @@
+:root{
+    --bg: #0b0b0d;
+    --panel: #111114;
+    --card: #15151a;
+    --text: #f5f5f7;
+    --muted: rgba(245,245,247,.72);
+    --red: #e10600;
+    --white: #ffffff;
+    --black: #000000;
+    --border: rgba(255,255,255,.10);
+    --shadow: 0 16px 40px rgba(0,0,0,.45);
+    --radius: 18px;
+    --radius-sm: 12px;
+    --max: 1100px;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  }
+  
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+  
+    /* Fond blanc + rouge + voile noir doux */
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.733),
+        rgba(0, 0, 0, 0.075)
+      ),
+      linear-gradient(
+        180deg,
+        rgba(32, 0, 0, 0.616)
+      );
+  }
+  
+  a{ color: inherit; text-decoration: none; }
+  a:hover{ text-decoration: none; }
+  
+  .wrap{
+  padding: 2%;
+  }
+  
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display:flex;
+    gap:16px;
+    align-items:center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(12, 10, 10, 0.7);
+    backdrop-filter: blur(10px);
+  }
+  
+  .brand-link {
+      text-decoration: none;
+      color: inherit;
+      display: inline-flex;
+    }
+    
+    .brand-link:hover .brand-title {
+      text-decoration: none;
+    }
+    
+    .brand-link:hover .brand-mark {
+      filter: brightness(1.15);
+    }
+  
+  .brand{ display:flex; gap:12px; align-items:center; }
+  .brand-mark{
+    width: 34px; height: 34px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--red), #ff3b30);
+    box-shadow: 0 10px 25px rgba(225,6,0,.25);
+  }
+  .brand-title{ font-weight: 800; letter-spacing: .2px; }
+  .brand-subtitle{ font-size: 12px; color: var(--muted); margin-top: 2px; }
+  
+  .search{ display:flex; align-items:center; gap:8px; }
+  .search input{
+    width: min(420px, 44vw);
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    color: var(--text);
+    outline: none;
+  }
+  .search input:focus{
+    border-color: rgba(225,6,0,.55);
+    box-shadow: 0 0 0 4px rgba(225,6,0,.18);
+  }
+  
+  .layout{
+    display:grid;
+    grid-template-columns: 280px 1fr;
+    gap: 18px;
+    max-width: calc(var(--max) + 280px);
+    margin: 18px auto 40px;
+    padding: 0 16px;
+  }
+
+/* Page: ASSURER LA QUALITÉ DU SERVICE
+   Complément à elements.css
+*/
+
+/* Titre de page */
+.wrap > h2{
+    margin: 10px 0 14px;
+    font-size: clamp(22px, 2.4vw, 34px);
+    font-weight: 950;
+    letter-spacing: .2px;
+    color: white;
+    text-shadow: 0 10px 26px rgba(0,0,0,.35);
+  }
+  
+  /* Conteneur des règles */
+  .moonshot-rules{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Carte “règle” */
+  .rule-item{
+    position: relative;
+    display: grid;
+    grid-template-columns: 10px 1fr;
+    gap: 14px;
+    align-items: start;
+  
+    padding: 16px 16px;
+    border-radius: 14px;
+  
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  
+  /* Accent rouge à gauche */
+  .rule-accent{
+    width: 10px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(225,6,0,1), rgba(225,6,0,.35));
+    box-shadow: 0 10px 24px rgba(225,6,0,.18);
+  }
+  
+  /* Texte */
+  .rule-item p{
+    margin: 0;
+    line-height: 1.55;
+    color: rgba(0,0,0,.82);
+    font-size: 15px;
+  }
+  
+  /* Effet hover */
+  .rule-item:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 22px 55px rgba(0,0,0,.16);
+    border-color: rgba(225,6,0,.22);
+  }
+  
+  /* Glow discret en fond */
+  .rule-item::after{
+    content:"";
+    position:absolute;
+    inset: 0;
+    pointer-events:none;
+    background:
+      radial-gradient(700px 220px at 15% 0%, rgba(225,6,0,.12), transparent 55%),
+      radial-gradient(520px 200px at 110% 30%, rgba(225,6,0,.08), transparent 60%);
+    opacity: .9;
+  }
+  
+  /* Responsive */
+  @media (max-width: 640px){
+    .rule-item{
+      grid-template-columns: 8px 1fr;
+      gap: 12px;
+      padding: 14px 14px;
+    }
+    .rule-accent{ width: 8px; }
+    .rule-item p{ font-size: 14px; }
+  }
+  
+  /* Section */
+  .moonshot-section{
+    margin-top: 10px;
+  }
+  
+  /* Intro */
+  .moonshot-intro{
+    margin: 0 0 14px;
+    padding: 14px 16px;
+    line-height: 1.6;
+    font-size: 15px;
+    color: white;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+  }
+  
+  .moonshot-intro strong{
+    color: red;
+    font-weight: 800;
+  }
+  
+  /* Grille de cartes */
+  .moonshot-cards{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+  
+  /* Carte */
+  .moonshot-card{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+  
+    padding: 14px 14px;
+    border-radius: 16px;
+  
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    cursor: default;
+  }
+  
+  /* Liseré “Moonshot” subtil */
+  .moonshot-card::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    pointer-events:none;
+    background:
+      radial-gradient(520px 220px at 0% 0%, rgba(225,6,0,.12), transparent 55%),
+      radial-gradient(420px 220px at 100% 40%, rgba(225,6,0,.08), transparent 60%);
+    opacity: .95;
+  }
+  
+  /* Titre de carte */
+  .moonshot-card-title{
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 850;
+    color: rgba(0,0,0,.82);
+    line-height: 1.25;
+  }
+  
+  /* Icône */
+  .moonshot-icon{
+    position: relative;
+    z-index: 1;
+  
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+  
+    display: grid;
+    place-items: center;
+  
+    font-size: 20px;
+    background: rgba(0,0,0,.06);
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  
+  /* Hover */
+  .moonshot-card:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 22px 55px rgba(0,0,0,.16);
+    border-color: rgba(225,6,0,.22);
+  }
+  
+  .moonshot-card:hover .moonshot-icon{
+    background: rgba(225,6,0,.10);
+    border-color: rgba(225,6,0,.18);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px){
+    .moonshot-cards{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 560px){
+    .moonshot-cards{
+      grid-template-columns: 1fr;
+    }
+    .moonshot-card{
+      padding: 13px 13px;
+    }
+    .moonshot-card-title{
+      font-size: 14px;
+    }
+  }
+  
+  /* Section */
+  .moonshot-section{
+    margin-top: 10px;
+  }
+
+  
+  /* Liste des activités interdites */
+  .forbidden-list{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  
+  /* Carte item */
+  .forbidden-item{
+    position: relative;
+    padding: 14px 14px 13px;
+    border-radius: 16px;
+  
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  
+  /* Liseré rouge subtil (cohérent Moonshot) */
+  .forbidden-item::before{
+    content:"";
+    position:absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg, rgba(225,6,0,1), rgba(225,6,0,.35));
+    box-shadow: 0 10px 24px rgba(225,6,0,.18);
+  }
+  
+  /* Glow discret dans la carte */
+  .forbidden-item::after{
+    content:"";
+    position:absolute;
+    inset: 0;
+    pointer-events:none;
+    background:
+      radial-gradient(520px 220px at 0% 0%, rgba(225,6,0,.12), transparent 55%),
+      radial-gradient(420px 220px at 100% 40%, rgba(225,6,0,.08), transparent 60%);
+    opacity: .9;
+  }
+  
+  /* Titre */
+  .forbidden-title{
+    position: relative;
+    z-index: 1;
+    margin: 0 0 6px;
+    padding-left: 10px; /* pour respirer après la barre rouge */
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: .2px;
+    color: rgba(0,0,0,.86);
+  }
+  
+  /* Description */
+  .forbidden-desc{
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(0,0,0,.78);
+  }
+  
+  /* Hover */
+  .forbidden-item:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 22px 55px rgba(0,0,0,.16);
+    border-color: rgba(225,6,0,.22);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px){
+    .forbidden-list{
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 560px){
+    .forbidden-item{
+      padding: 13px 13px 12px;
+    }
+    .forbidden-title{ font-size: 14.5px; }
+    .forbidden-desc{ font-size: 13.8px; }
+  }
+  
+  /* Grille principale */
+  .moonshot-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Carte */
+  .moonshot-item{
+    position: relative;
+    padding: 16px 16px;
+    border-radius: 16px;
+  
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  
+  /* Accent “Moonshot” à gauche */
+  .moonshot-item::before{
+    content:"";
+    position:absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg, rgba(225,6,0,1), rgba(225,6,0,.35));
+    box-shadow: 0 10px 24px rgba(225,6,0,.18);
+  }
+  
+  /* Glow discret en fond */
+  .moonshot-item::after{
+    content:"";
+    position:absolute;
+    inset: 0;
+    pointer-events:none;
+    background:
+      radial-gradient(520px 220px at 0% 0%, rgba(225,6,0,.12), transparent 55%),
+      radial-gradient(420px 220px at 100% 40%, rgba(225,6,0,.08), transparent 60%);
+    opacity: .9;
+  }
+  
+  /* Titre de carte */
+  .moonshot-title{
+    position: relative;
+    z-index: 1;
+    margin: 0 0 8px;
+    padding-left: 10px; /* respiration après l'accent */
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: .2px;
+    color: rgba(0,0,0,.86);
+  }
+  
+  /* Texte */
+  .moonshot-text{
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(0,0,0,.78);
+  }
+  
+  /* Hover */
+  .moonshot-item:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 22px 55px rgba(0,0,0,.16);
+    border-color: rgba(225,6,0,.22);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px){
+    .moonshot-grid{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 640px){
+    .moonshot-grid{
+      grid-template-columns: 1fr;
+    }
+    .moonshot-item{
+      padding: 14px 14px;
+    }
+    .moonshot-title{ font-size: 14.5px; }
+    .moonshot-text{ font-size: 13.8px; }
+  }
+  
+  /* Section container */
+  .moonshot-section{
+    margin-top: 10px;
+    padding: 16px 16px;
+    border-radius: 16px;
+  
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Headings */
+  .moonshot-h2{
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 950;
+    color: white;
+    letter-spacing: .2px;
+  }
+  
+  .moonshot-h3{
+    margin: 14px 0 8px;
+    font-size: 15px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: .15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Petit marqueur rouge devant les h3 */
+  .moonshot-h3::before{
+    content:"";
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(225,6,0,1), rgba(225,6,0,.35));
+    box-shadow: 0 10px 24px rgba(225,6,0,.18);
+  }
+  
+  /* Paragraphs */
+  .moonshot-p{
+    margin: 0 0 10px;
+    line-height: 1.6;
+    font-size: 15px;
+    color: white;
+  }
+  
+  /* Liste */
+  .moonshot-list{
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+  
+    display: grid;
+    gap: 10px;
+  }
+  
+  /* Item de liste façon “card” */
+  .moonshot-list li{
+    position: relative;
+    padding: 12px 12px 12px 14px;
+    border-radius: 14px;
+  
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow: var(--shadow);
+    color: rgba(0,0,0,.80);
+    line-height: 1.55;
+    font-size: 14px;
+    overflow: hidden;
+  }
+  
+  /* Accent rouge à gauche + glow discret */
+  .moonshot-list li::before{
+    content:"";
+    position:absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 7px;
+    background: linear-gradient(180deg, rgba(225,6,0,1), rgba(225,6,0,.35));
+    box-shadow: 0 10px 24px rgba(225,6,0,.18);
+  }
+  
+  .moonshot-list li::after{
+    content:"";
+    position:absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(520px 220px at 0% 0%, rgba(225,6,0,.10), transparent 55%),
+      radial-gradient(420px 220px at 100% 40%, rgba(225,6,0,.06), transparent 60%);
+    opacity: .95;
+  }
+  
+  /* Hover léger */
+  .moonshot-list li:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 22px 55px rgba(0,0,0,.16);
+    border-color: rgba(225,6,0,.22);
+  }
+  
+  /* Responsive */
+  @media (max-width: 640px){
+    .moonshot-section{
+      padding: 14px 14px;
+    }
+    .moonshot-p{ font-size: 14px; }
+    .moonshot-list li{ font-size: 13.8px; }
+  }
+  
+  

@@ -1,0 +1,582 @@
+:root{
+    --red:#e10600;
+    --black:#0b0b0d;
+    --text:#111;
+    --muted:#555;
+    --panel:rgba(255,255,255,.78);
+    --border:rgba(0,0,0,.12);
+    --shadow:0 18px 50px rgba(0,0,0,.12);
+  }
+  
+  *{ box-sizing:border-box; }
+  
+  body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+  
+    /* Fond blanc + rouge + voile noir doux */
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.733),
+        rgba(0, 0, 0, 0.075)
+      ),
+      linear-gradient(
+        180deg,
+        rgba(32, 0, 0, 0.616)
+      );
+  }
+  
+  /* ===== Topbar (mêmes classes que tes pages) ===== */
+  .topbar{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    padding:14px 22px;
+    background:#fff;
+    border-bottom:3px solid var(--red);
+    box-shadow:0 6px 20px rgba(0,0,0,.12);
+  }
+  .brand-link{ text-decoration:none; color:inherit; }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:36px;height:36px;border-radius:10px;
+    background:var(--red);
+    box-shadow: 0 10px 22px rgba(225,6,0,.20);
+  }
+  .brand-title{ font-weight:900; font-size:18px; line-height:1.1; }
+  .brand-subtitle{ font-size:12px; color: var(--muted); margin-top:2px; }
+  
+  /* ===== Hero ===== */
+  .hero{
+    position: relative;
+    margin-top: 70px; /* topbar */
+    padding: 18px 0 10px;
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background: radial-gradient(800px 280px at 18% 20%, rgba(225,6,0,.18), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-content{
+    position:relative;
+    width: min(1200px, 94vw);
+    margin: 0 auto;
+    color: var(--black);
+  }
+  .hero-content h1{
+    margin: 0 0 6px;
+    font-weight: 950;
+    letter-spacing: .2px;
+  }
+  .hero-content p{
+    margin: 0 0 10px;
+    color: rgba(0,0,0,.68);
+  }
+  .hero-badges{ display:flex; gap:10px; flex-wrap:wrap; }
+  .badge{
+    display:inline-flex;
+    padding:7px 10px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:800;
+    border:1px solid rgba(0,0,0,.10);
+    background: rgba(0,0,0,.04);
+  }
+  .badge-red{
+    border-color: rgba(225,6,0,.35);
+    background: rgba(225,6,0,.10);
+    color: var(--red);
+  }
+  
+  /* ===== Layout ===== */
+  .wrap{
+    width: min(1200px, 94vw);
+    margin: 0 auto;
+    padding: 16px 0 40px;
+  }
+  .panel{
+    border-radius: 14px;
+    padding: 18px 18px 20px;
+    background: var(--panel);
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: var(--shadow);
+  }
+  .section-title{
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--red);
+  }
+  
+  /* ===== Phone stage ===== */
+  .phone-stage{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 18px;
+    align-items:start;
+  }
+  
+  /* Le téléphone */
+  .phone{
+    display:flex;
+    justify-content:center;
+  }
+  .phone__frame{
+    position: relative;
+    width: 360px;             /* largeur du téléphone */
+    border-radius: 34px;
+    padding: 14px;
+    background: linear-gradient(180deg, #111, #2a2a2a);
+    box-shadow: 0 26px 60px rgba(0,0,0,.25);
+  }
+  .phone__frame::before{
+    content:"";
+    position:absolute;
+    inset: 9px;
+    border-radius: 28px;
+    background: #000;
+    opacity:.22;
+    pointer-events:none;
+  }
+  .phone__screen{
+    width: 100%;
+    height: auto;
+    display:block;
+    border-radius: 22px;
+    background: #fff;
+  }
+  
+  /* ===== Hotspots (zones cliquables) ===== */
+
+ /* ===== BOUTON RETOUR ===== */
+  .hs-retour .hotspot__label{
+    position:absolute;
+    left: 8%;
+    top: 6%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    white-space: nowrap;
+    width: 7%;
+    height: 5%;
+    /*background: red;*/
+  }
+  
+  /* Label visible */
+  
+   /* ===== BOUTON CONNEXION ===== */
+  .hs-access .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%,-50%);
+    border-radius: 999px;
+    white-space: nowrap;
+    width: 30%;
+    height: 4%;
+    /*background: red;*/
+  }
+
+   /* ===== TYPE SERVICE HTML ===== */
+  .hs-new-install .hotspot__label{
+    position:absolute;
+    left: 28%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+  
+  .hs-maintenance .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-logistique .hotspot__label{
+    position:absolute;
+    left: 72%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-outils .hotspot__label{
+    position:absolute;
+    left: 38%;
+    top: 53%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 21%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-quit .hotspot__label{
+    position:absolute;
+    left: 61%;
+    top: 53%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 21%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+ /* ===== BOUTON NOUVELLE INSTALLATION HTML ===== */
+
+  .hs-creation-client .hotspot__label{
+    position:absolute;
+    left: 17%;
+    top: 38.5%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-installation .hotspot__label{
+    position:absolute;
+    left: 39%;
+    top: 38.5%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-creation-prospect-recherche-avancé .hotspot__label{
+    position:absolute;
+    left: 85%;
+    top: 20%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 22%;
+    height: 4%;
+    /*background: red;*/
+  }
+  
+
+  .hs-camera .hotspot__label{
+    position:absolute;
+    left: 61%;
+    top: 38.5%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+   /*background: red;*/
+  }
+
+  .hs-validation .hotspot__label{
+    position:absolute;
+    left: 83%;
+    top: 38.5%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+   /* ===== BOUTON maintenance HTML ===== */
+
+  .hs-search-maintenance .hotspot__label{
+    position:absolute;
+    left: 39%;
+    top: 39%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-maintenance-es90 .hotspot__label{
+    position:absolute;
+    left: 61%;
+    top: 39%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-rapport .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 52.5%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+   /* ===== BOUTON PROSPECT ===== */
+
+   .hs-creation-prospect .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 38%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-factory-reset .hotspot__label{
+    position:absolute;
+    left: 38.5%;
+    top: 34%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+
+  .hs-transfert-données .hotspot__label{
+    position:absolute;
+    left: 61%;
+    top: 34%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 20%;
+    height: 12%;
+    /*background: red;*/
+  }
+  
+  .hs-suppr-qr .hotspot__label{
+    position:absolute;
+    left: 77%;
+    top: 21%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 29%;
+    height: 4%;
+    /*background: red;*/
+  }
+
+  .hs-rein-qr .hotspot__label{
+    position:absolute;
+    left: 77%;
+    top: 47%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 29%;
+    height: 4%;
+    /*background: red;*/
+  }
+  
+  .hs-26L8G54G-suppr .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 28.5%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 42%;
+    height: 4%;
+    /*background: red;*/
+  }
+
+  .hs-26L8G54G-suppr-accepter .hotspot__label{
+    position:absolute;
+    left: 78%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 13%;
+    height: 4%;
+     /*background: red;*/
+  }
+
+  .hs-26L8G54G-suppr-info-accepter .hotspot__label{
+    position:absolute;
+    left: 71%;
+    top: 54%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 13%;
+    height: 4%;
+    /*background: red;*/
+  }
+
+  .hs-26L8G54G-suppr-annuler .hotspot__label{
+    position:absolute;
+    left: 65%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 13%;
+    height: 4%;
+     /*background: red;*/
+  }
+  
+  .hs-2D9XH5ER-suppr .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 42%;
+    height: 4%;
+    /*background: red;*/
+  }
+
+
+  .hs-2D9XH5ER-suppr-accepter .hotspot__label{
+    position:absolute;
+    left: 78%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 13%;
+    height: 4%;
+     /*background: red;*/
+  }
+
+  .hs-2D9XH5ER-suppr-annuler .hotspot__label{
+    position:absolute;
+    left: 65%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 13%;
+    height: 4%;
+     /*background: red;*/
+  }
+
+  .hs-creation-prospect-liste-prospect .hotspot__label{
+    position:absolute;
+    left: 84%;
+    top:19.5%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 23%;
+    height: 4%;
+     /*background: red;*/
+  }
+
+  .hs-creation-prospect-suivant .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 56%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 46%;
+    height: 4%;
+     /*background: red;*/
+  }
+
+  .hs-creation-prospect-suivant-suivant .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 78%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 46%;
+    height: 4%;
+     /*background: red;*/
+  }
+
+  .hs-creation-prospect-suivant-suivant-suivant .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 61%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 46%;
+    height: 4%;
+     /*background: red;*/
+  }
+  
+  .hs-creation-prospect-accepter .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 40%;
+    height: 4%;
+    /*background: red;*/
+  }
+
+  .hs-creation-prospect-recherche-cp .hotspot__label{
+    position:absolute;
+    left: 80%;
+    top: 44%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 22%;
+    height: 4%;
+    /*background: red;*/
+  }
+
+  .hs-creation-prospect-accepter-suivant .hotspot__label{
+    position:absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    white-space: nowrap;
+    width: 43%;
+    height: 4%;
+    /*background: red;*/
+  }
+  
+
+  /* Responsive */
+  @media (max-width: 980px){
+    .phone-stage{ grid-template-columns: 1fr; }
+    .phone__frame{ width: 320px; }
+  }
